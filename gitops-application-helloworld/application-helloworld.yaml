@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helloworld
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: app-helloworld
+    repoURL: https://github.com/giovannisciortino/gitops-examples.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
