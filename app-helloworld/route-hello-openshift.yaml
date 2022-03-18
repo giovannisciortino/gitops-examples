@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app.kubernetes.io/instance: helloworld
+  name: hello-openshift
+  namespace: helloworld
+spec:
+  host: hello-openshift-helloworld.apps.lab01.gpslab.club
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: hello-openshift
+    weight: 100
+  wildcardPolicy: None
