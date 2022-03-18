@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: helloworld
+spec:
+  finalizers:
+  - kubernetes
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app.kubernetes.io/instance: helloworld-1
+  name: hello-openshift
+  namespace: helloworld-1
+spec:
+  host: hello-openshift-helloworld-1.apps.lab01.gpslab.club
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: hello-openshift
+    weight: 100
+  wildcardPolicy: None
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: helloworld-1
+  name: hello-openshift
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-openshift
+  template:
+    metadata:
+      labels:
+        app: hello-openshift
+    spec:
+      containers:
+      - name: hello-openshift
+        image: openshift4/ose-hello-openshift-rhel8
+        ports:
+        - containerPort: 8080
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: helloworld-1
+  name: hello-openshift
+  namespace: helloworld-1
+spec:
+  clusterIP: 172.30.237.204
+  clusterIPs:
+  - 172.30.237.204
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-openshiftpippo
+  sessionAffinity: None
+  type: ClusterIP
