@@ -9,9 +9,6 @@ spec:
   clusterIP: 172.30.237.204
   clusterIPs:
   - 172.30.237.204
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - port: 8080
     protocol: TCP
