@@ -51,7 +51,7 @@ spec:
             - name: ACCESS_KEY
               value: {{ .Values.envVar }}
             - name: ACCESS_KEY2
-              value: $(  )
+              value: ${ }
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

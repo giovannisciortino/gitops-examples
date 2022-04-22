@@ -84,4 +84,4 @@ affinity: {}
 container:
   port: 8080
 
-envVar: $(   )
+envVar: ${ }
