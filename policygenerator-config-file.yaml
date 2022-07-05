@@ -22,25 +22,25 @@ policies:
   placement:
     clusterSelectors:
       vendor: OpenShift
-- name: stage-configurations-gsciorti
-  categories:
-    - setup
-  controls:
-    - setup
-  disabled: false
-  manifests:
-    - path: ./common/overlays/stage/manifests
-  placement:
-    clusterSelectors:
-      env: stage
-- name: prod-configurations-gsciorti
-  categories:
-    - setup
-  controls:
-    - setup
-  disabled: false
-  manifests:
-    - path: ./common/overlays/prod/manifests
-  placement:
-    clusterSelectors:
-      env: prod
+#- name: stage-configurations-gsciorti
+#  categories:
+#    - setup
+#  controls:
+#    - setup
+#  disabled: false
+#  manifests:
+#    - path: ./common/overlays/stage/manifests
+#  placement:
+#    clusterSelectors:
+#      env: stage
+#- name: prod-configurations-gsciorti
+#  categories:
+#    - setup
+#  controls:
+#    - setup
+#  disabled: false
+#  manifests:
+#    - path: ./common/overlays/prod/manifests
+#  placement:
+#    clusterSelectors:
+#      env: prod
