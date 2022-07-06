@@ -1,0 +1,38 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: policy-generator-gsciorti
+policyDefaults:
+  categories:
+    - ACM Configuration Management
+  controls:
+    - ACM Baseline Configuration
+  namespace: policies
+  remediationAction: inform
+  severity: medium
+policies:
+####################  POLICY APPLIED TO ALL CLUSTER ##########################
+- name: pol-gen-inform-base-configurations-gsciorti
+  disabled: false
+  manifests:
+    - path: ./common/base/manifests
+  placement:
+    clusterSelectors:
+      vendor: OpenShift
+################### POLICY APPLIED TO CLUSTER WITH SAME cloud AND env ########################
+- name: pol-gen-inform-vmware-stage-configurations-gsciorti
+  disabled: false
+  manifests:
+    - path: ./common/overlays/vmware-stage/manifests
+  placement:
+    clusterSelectors:
+      cloud: VSphere
+      env: stage
+################### POLICY APPLIED TO SINGLE CLUSTERS ########################
+- name: pol-gen-inform-lab01-configurations-gsciorti
+  disabled: false
+  manifests:
+    - path: ./common/overlays/lab01/manifests
+  placement:
+    clusterSelectors:
+      name: local-cluster
