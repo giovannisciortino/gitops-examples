@@ -44,7 +44,7 @@ policies:
   placement:
     clusterSelectors:
       cloud: VSphere
-      env: stage
+      env: stage1
 
 
 
