@@ -30,6 +30,7 @@ policies:
   disabled: false
   manifests:
     - path: ./common/overlays/lab01/manifests
+  remediationAction: enforce
   placement:
     clusterSelectors:
       name: local-cluster
