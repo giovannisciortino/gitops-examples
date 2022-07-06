@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: policy-generator-gsciorti
+  name: policy-gen-inform-gsciorti
 policyDefaults:
   categories:
     - ACM Configuration Management
