@@ -15,7 +15,7 @@ policies:
 - name: pol-gen-inform-base-configurations-gsciorti
   disabled: false
   manifests:
-    - path: ./common/base/manifests
+    - path: ./inform/common/base/manifests
   placement:
     clusterSelectors:
       vendor: OpenShift
@@ -23,7 +23,7 @@ policies:
 - name: pol-gen-inform-vmware-stage-configurations-gsciorti
   disabled: false
   manifests:
-    - path: ./common/overlays/vmware-stage/manifests
+    - path: ./inform/common/overlays/vmware-stage/manifests
   placement:
     clusterSelectors:
       cloud: VSphere
@@ -32,7 +32,7 @@ policies:
 - name: pol-gen-inform-lab01-configurations-gsciorti
   disabled: false
   manifests:
-    - path: ./common/overlays/lab01/manifests
+    - path: ./inform/common/overlays/lab01/manifests
   placement:
     clusterSelectors:
       name: local-cluster
