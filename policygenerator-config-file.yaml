@@ -27,7 +27,7 @@ policies:
     - setup
   controls:
     - setup
-  disabled: false
+  disabled: true
   manifests:
     - path: ./common/overlays/lab01/manifests
   placement:
