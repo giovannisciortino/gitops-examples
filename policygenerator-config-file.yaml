@@ -40,11 +40,12 @@ policies:
     - setup
   disabled: false
   manifests:
-    - path: ./common/overlays/vmware-stage/manifests
+    - path: ./common/overlays/lab01/manifests
   placement:
     clusterSelectors:
-#      cloud: VSphere
       name: local-cluster
+
+
 
 #- name: policy-generator-inform-vmware-stage-configurations-gsciorti
 #  categories:
