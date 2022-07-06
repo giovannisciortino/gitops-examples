@@ -40,7 +40,7 @@ policies:
     - setup
   disabled: false
   manifests:
-    - path: ./common/overlays/lab01/manifests/
+    - path: ./common/overlays/vmware-stage/manifests/
   placement:
     clusterSelectors:
       cloud: VSphere
