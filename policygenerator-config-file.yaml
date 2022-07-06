@@ -11,7 +11,7 @@ policyDefaults:
   remediationAction: inform
   severity: medium
 policies:
-- name: base-configurations-gsciorti
+- name: policy-generator-base-configurations-gsciorti
   categories:
     - setup
   controls:
@@ -22,14 +22,12 @@ policies:
   placement:
     clusterSelectors:
       vendor: OpenShift
-- name: lab01-configurations-gsciorti
+- name: policy-generator-lab01-configurations-gsciorti
   categories:
     - setup
   controls:
     - setup
   disabled: false
-  spec:
-    remediationAction: enforce
   manifests:
     - path: ./common/overlays/lab01/manifests
   placement:
