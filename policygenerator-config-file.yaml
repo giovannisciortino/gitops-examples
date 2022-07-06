@@ -11,7 +11,7 @@ policyDefaults:
   remediationAction: inform
   severity: medium
 policies:
-- name: policy-generator-inform-base-configurations-gsciorti
+- name: policy-gen-inform-base-configurations-gsciorti
   categories:
     - setup
   controls:
@@ -22,7 +22,7 @@ policies:
   placement:
     clusterSelectors:
       vendor: OpenShift
-- name: policy-generator-inform-lab01-configurations-gsciorti
+- name: policy-gen-inform-lab01-configurations-gsciorti
   categories:
     - setup
   controls:
@@ -33,7 +33,7 @@ policies:
   placement:
     clusterSelectors:
       name: local-cluster
-- name: policy-generator-inform-lab01-new-new
+- name: policy-gen-inform-vmware-stage-configurations-gsciorti
   categories:
     - setup
   controls:
