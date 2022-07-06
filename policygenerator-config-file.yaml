@@ -33,7 +33,7 @@ policies:
   placement:
     clusterSelectors:
       name: local-cluster
-- name: policy-generator-inform-lab01-configurations-gsciorti-new
+- name: policy-generator-inform-lab01-new-new
   categories:
     - setup
   controls:
