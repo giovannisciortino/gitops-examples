@@ -43,7 +43,8 @@ policies:
     - path: ./common/overlays/vmware-stage/manifests
   placement:
     clusterSelectors:
-      name: local-cluster1
+      cloud: VSphere
+      env: stage
 
 
 
