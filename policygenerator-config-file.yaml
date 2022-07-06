@@ -44,5 +44,5 @@ policies:
   placement:
     clusterSelectors:
       cloud: VSphere
-      env: prod
+#      env: prod
 
