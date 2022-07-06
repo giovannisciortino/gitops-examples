@@ -28,7 +28,8 @@ policies:
   controls:
     - setup
   disabled: false
-  remediationAction: enforce
+  spec:
+    remediationAction: enforce
   manifests:
     - path: ./common/overlays/lab01/manifests
   placement:
