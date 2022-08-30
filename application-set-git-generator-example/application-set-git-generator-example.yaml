@@ -1,7 +1,38 @@
+#apiVersion: argoproj.io/v1alpha1
+#kind: ApplicationSet
+#metadata:
+#  name: app-set-git-generator-example
+#  namespace: openshift-gitops
+#spec:
+#  generators:
+#  - git:
+#      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+#      revision: HEAD
+#      files:
+#      - path: application-set-git-generator-config/*/config.json"
+#  template:
+#    metadata:
+#      name: '{{cluster.name}}-guestbook'
+#    spec:
+#      project: default
+#      source:
+##        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+##        targetRevision: HEAD
+##        path: 'chart1'
+#        repoURL: https://github.com/argoproj/argo-cd.git
+#        targetRevision: HEAD
+#        path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
+#      destination:
+#        server: '{{cluster.address}}'
+#        namespace: guestbook
+#      syncPolicy:
+#        automated: {}
+#        syncOptions:
+#          - CreateNamespace=true
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: app-set-git-generator-example
+  name: guestbook
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,20 +40,16 @@ spec:
       repoURL: https://github.com/giovannisciortino/gitops-examples.git
       revision: HEAD
       files:
-      - path: application-set-git-generator-config/*/config.json"
+      - path: "application-set-git-generator-config/**/config.json"
   template:
     metadata:
-      name: '{{app}}'
+      name: '{{cluster.name}}-guestbook'
     spec:
       project: default
       source:
-        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
-        path: 'chart1'
+        path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
       destination:
-        server: https://kubernetes.default.svc
-        namespace: 'helloworld'
-      syncPolicy:
-        automated: {}
-        syncOptions:
-          - CreateNamespace=true
+        server: '{{cluster.address}}'
+        namespace: guestbook
