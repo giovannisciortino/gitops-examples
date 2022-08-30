@@ -26,6 +26,8 @@ spec:
         server: '{{url}}'
         namespace: '{{optionNamespaceProject}}'
       syncPolicy:
+        # Don't delete application when applicationSet is deleted
+        preserveResourcesOnDeletion: true
         automated: {}
         syncOptions:
           - CreateNamespace=true
