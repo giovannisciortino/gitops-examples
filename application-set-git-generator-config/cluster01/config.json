@@ -5,6 +5,6 @@
     "cluster": {
       "owner": "cluster-admin@company.com",
       "name": "engineering-prod",
-      "address": "http://kubernetes.default.svc"
+      "address": "https://kubernetes.default.svc"
     }
 }
