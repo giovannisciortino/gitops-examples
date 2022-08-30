@@ -1,5 +1,7 @@
 {
-    "name": "app",
+    "application": {
+        "name": "app-1"
+      },
     "aws_account": "123456",
     "asset_id": "11223344",
     "cluster": {

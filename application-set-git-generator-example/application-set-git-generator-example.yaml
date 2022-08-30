@@ -16,9 +16,6 @@
 #    spec:
 #      project: default
 #      source:
-##        repoURL: https://github.com/giovannisciortino/gitops-examples.git
-##        targetRevision: HEAD
-##        path: 'chart1'
 #        repoURL: https://github.com/argoproj/argo-cd.git
 #        targetRevision: HEAD
 #        path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
@@ -47,9 +44,10 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/argoproj/argo-cd.git
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
         targetRevision: HEAD
-        path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
+        path: 'chart1'
+
       destination:
         server: '{{cluster.address}}'
         namespace: guestbook
