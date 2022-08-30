@@ -1,15 +1,11 @@
 {
-    "application": {
-        "name": "app-1-change"
-    },
-    "source": {
-       "targetRevision": "HEAD"
-    },
-    "aws_account": "123456",
-    "asset_id": "11223344",
-    "cluster": {
-      "owner": "cluster-admin@company.com",
-      "name": "engineering-prod",
-      "address": "https://kubernetes.default.svc"
-    }
+  "application": {
+      "name": "app-1"
+  },
+  "source": {
+     "targetRevision": "HEAD"
+  },
+  "cluster": {
+    "address": "https://kubernetes.default.svc"
+  }
 }

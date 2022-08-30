@@ -1,0 +1,11 @@
+{
+    "application": {
+        "name": "app-2"
+    },
+    "source": {
+       "targetRevision": "HEAD"
+    },
+    "cluster": {
+      "address": "https://kubernetes.default.svc"
+    }
+}
