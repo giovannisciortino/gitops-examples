@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/giovannisciortino/gitops-examples.git
       revision: HEAD
       directories:
-      - path: application-set-git-generator-config/**/config.json"
+      - path: application-set-git-generator-config/*/config.json"
   template:
     metadata:
       name: 'app'
