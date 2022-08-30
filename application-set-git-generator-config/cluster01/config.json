@@ -1,7 +1,10 @@
 {
     "application": {
         "name": "app-1-change"
-      },
+    },
+    "source": {
+       "targetRevision": "HEAD"
+    },
     "aws_account": "123456",
     "asset_id": "11223344",
     "cluster": {
