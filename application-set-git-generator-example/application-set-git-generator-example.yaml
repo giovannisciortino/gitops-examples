@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-set-git-generator-example
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+      revision: HEAD
+      directories:
+      - path: application-set-git-generator-example/cluster/**/config.json"
+  template:
+    metadata:
+      name: 'app'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        targetRevision: HEAD
+        path: 'chart1'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'helloworld'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
