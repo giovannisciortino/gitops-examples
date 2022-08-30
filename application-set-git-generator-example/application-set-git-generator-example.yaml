@@ -40,7 +40,7 @@ spec:
       - path: "application-set-git-generator-config/**/config.json"
   template:
     metadata:
-      name: '{{cluster.name}}-guestbook'
+      name: '{{application.name}}'
     spec:
       project: default
       source:
