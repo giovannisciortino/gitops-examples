@@ -22,9 +22,13 @@ spec:
         repoURL: https://github.com/giovannisciortino/gitops-examples.git
         targetRevision: HEAD
         path: chart1
+      helm:
+        values: |
+          {{values}}
       destination:
         server: '{{url}}'
         namespace: '{{optionNamespaceProject}}'
+
       syncPolicy:
         # Don't delete application when applicationSet is deleted
         preserveResourcesOnDeletion: true
