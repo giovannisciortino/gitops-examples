@@ -7,6 +7,8 @@ cluster:
 values:
   var1: value1
 chartValues: |
+  image:
+    tag: v4.7.0-202105251845
   var1: cluster01value1
   nested1:
     var2: cluster01value2
