@@ -19,3 +19,6 @@ chartValues: |
       - cluster01value5
       - cluster01value6
   replicaCount: 3
+  args:
+    - --set-hostgroup=test
+    - --set-other_var=test
