@@ -49,7 +49,7 @@ spec:
         path: 'chart1'
         helm:
           values: |-
-            {{chartValues}
+            {{chartValues}}
       destination:
         server: '{{cluster.address}}'
         namespace: guestbook
