@@ -7,4 +7,4 @@ cluster:
 values:
   var1: value2
 chartValues: 
-  emptyCharyValues: "not used"
+  emptyCharyValues: not_used
