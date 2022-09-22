@@ -40,16 +40,16 @@ spec:
       - path: "application-set-git-generator-config/**/config.yaml"
   template:
     metadata:
-      name: '{{appname}}'
+      name: '{{application.name}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/giovannisciortino/gitops-examples.git
         targetRevision: '{{source.targetRevision}}'
         path: 'chart1'
- #       helm:
- #         values: |-
- #           {{chartValues}}
+        helm:
+          values: |-
+            {{chartValues}}
       destination:
         server: '{{cluster.address}}'
         namespace: guestbook

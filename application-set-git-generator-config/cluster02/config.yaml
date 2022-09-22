@@ -7,6 +7,8 @@ cluster:
 values:
   var1: value2
 chartValues: |
+  image:
+    tag: v4.7.0-202107292319.p0.git.24f464b.assembly.stream
   var1: cluster02value1
   nested1:
     var2: cluster02value2
