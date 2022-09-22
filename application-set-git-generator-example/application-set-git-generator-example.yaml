@@ -9,7 +9,7 @@
 #      repoURL: https://github.com/giovannisciortino/gitops-examples.git
 #      revision: HEAD
 #      files:
-#      - path: application-set-git-generator-config/*/config.json"
+#      - path: application-set-git-generator-config/*/config.yaml"
 #  template:
 #    metadata:
 #      name: '{{cluster.name}}-guestbook'
@@ -37,17 +37,19 @@ spec:
       repoURL: https://github.com/giovannisciortino/gitops-examples.git
       revision: HEAD
       files:
-      - path: "application-set-git-generator-config/**/config.json"
+      - path: "application-set-git-generator-config/**/**.yaml"
   template:
     metadata:
-      name: '{{application.name}}'
+      name: '{{appname}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/giovannisciortino/gitops-examples.git
         targetRevision: '{{source.targetRevision}}'
         path: 'chart1'
-
+ #       helm:
+ #         values: |-
+ #           {{chartValues}}
       destination:
         server: '{{cluster.address}}'
         namespace: guestbook
