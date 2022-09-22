@@ -23,9 +23,6 @@ spec:
         helm:
           values: |-
             {{chartValues}}
-# QUESTO FUNZIONA
-#            {{chartValues}}
-
       destination:
         server: '{{cluster.address}}'
         namespace: guestbook
