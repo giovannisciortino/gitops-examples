@@ -22,7 +22,7 @@ spec:
         path: 'chart1'
         helm:
           values: |-
-            {{default "" chartValues}}
+            {{chartValues}}
 # QUESTO FUNZIONA
 #            {{chartValues}}
 
