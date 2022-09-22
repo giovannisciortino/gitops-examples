@@ -6,3 +6,5 @@ cluster:
   address: https://kubernetes.default.svc
 values:
   var1: value2
+chartValues: |
+  emptyCharyValues: not_used
