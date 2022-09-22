@@ -1,0 +1,19 @@
+appname: app-1BIS
+application:
+  name: app-1BIS
+source:
+  targetRevision: HEAD
+cluster:
+  address: https://kubernetes.default.svc
+values:
+  var1: value1
+chartValues: |
+  var1: cluster01value1
+  nested1:
+    var2: cluster01value2
+    var3: cluster01value3
+    list1:
+      - cluster01value4
+      - cluster01value5
+      - cluster01value6
+  replicaCount: 3
