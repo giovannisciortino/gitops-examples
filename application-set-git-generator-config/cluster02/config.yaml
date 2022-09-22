@@ -1,5 +1,5 @@
 application:
-  name: app-2BIS
+  name: app2BIS
 source:
   targetRevision: HEAD
 cluster:

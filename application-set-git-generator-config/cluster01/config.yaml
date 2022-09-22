@@ -1,6 +1,5 @@
-appname: app-1BIS
 application:
-  name: app-1BIS
+  name: app1BIS
 source:
   targetRevision: HEAD
 cluster:
