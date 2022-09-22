@@ -8,7 +8,7 @@ values:
   var1: value1
 chartValues: |
   image:
-    tag: v4.7.0-202105251845
+    tag: v4.7.0-202201211922.p0.g7706ed4.assembly.stream
   replicaCount: 2
   var1: cluster01value1
   nested1:
