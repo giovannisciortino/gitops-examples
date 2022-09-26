@@ -3,3 +3,7 @@ kind: Namespace
 metadata:
   name: gsciorti-rhacm
 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gsciorti-rhacm-new
