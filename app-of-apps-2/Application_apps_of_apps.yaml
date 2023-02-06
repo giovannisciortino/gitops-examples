@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ocp-clusters-config
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: cluster-project
+  source:
+    path: app-of-apps-2/local-cluster/gitops-operator/application.argoproj.io
+    repoURL: https://github.com/giovannisciortino/gitops-examples.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+

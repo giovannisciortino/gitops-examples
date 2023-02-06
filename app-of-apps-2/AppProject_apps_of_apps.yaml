@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-project
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  - group: '*'
+    kind: ClusterRoleBinding
+  - group: '*'
+    kind: ConsoleLink
+  - group: '*'
+    kind: Project
+  - group: '*'
+    kind: OAuth
+  - group: '*'
+    kind: ClusterRole
+  - group: '*'
+    kind: Proxy
+  - group: '*'
+    kind: Config
+  - group: '*'
+    kind: PersistentVolume
+  - group: '*'
+    kind: APIServer
+  - group: '*'
+    kind: MachineConfig
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
