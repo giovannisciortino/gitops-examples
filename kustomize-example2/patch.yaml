@@ -1,0 +1,8 @@
+- op: add
+  path: "/spec/registrySources/allowedRegistries"
+  value:
+    - sleep
+    - "3600"
+
+
+
