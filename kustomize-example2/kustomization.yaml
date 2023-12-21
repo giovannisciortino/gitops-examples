@@ -8,6 +8,7 @@ patchesJson6902:
     version: v1
     kind: Image
     name: cluster
+    labelselector: "app.kubernetes.io/instance=sandbox1365-common"
   path: patch.yaml
 
 
