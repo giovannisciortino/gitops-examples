@@ -8,6 +8,7 @@ metadata:
 spec:
   registrySources:
     allowedRegistries:
+    - registry.redhat.io
     - registry.access.redhat.com
     - registry.connect.redhat.com
     - quay.io
