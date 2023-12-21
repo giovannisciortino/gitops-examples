@@ -1,0 +1,7 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: cohesity
+  namespace: gsciorti-test-sa
+secrets:
+  - name: cohesity-token-99w24
