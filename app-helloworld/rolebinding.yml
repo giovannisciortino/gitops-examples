@@ -9,6 +9,8 @@ items:
         to disable.
     name: system:deployers1
     namespace: helloworld
+    labels:
+      app.kubernetes.io/instance: helloworldotherapp
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
