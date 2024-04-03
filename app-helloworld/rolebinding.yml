@@ -7,6 +7,7 @@ items:
   metadata:
     creationTimestamp: null
     name: admin
+    namespace: helloworld
   roleRef:
     name: admin
   subjects:
@@ -23,6 +24,7 @@ items:
   metadata:
     creationTimestamp: null
     name: edit
+    namespace: helloworld
   roleRef:
     name: edit
   subjects:
