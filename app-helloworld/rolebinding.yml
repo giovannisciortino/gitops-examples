@@ -1,35 +1,52 @@
 apiVersion: v1
 items:
 - apiVersion: rbac.authorization.k8s.io/v1
-  groupNames:
-  - apps-group1
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
-    name: admin
-    namespace: helloworld
+    annotations:
+      openshift.io/description: Allows deploymentconfigs in this namespace to rollout
+        pods in this namespace.  It is auto-managed by a controller; remove subjects
+        to disable.
+    name: system:deployers1
   roleRef:
-    name: admin
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:deployer
   subjects:
-  - kind: Group
-    name: group1
   - kind: ServiceAccount
-    name: sa1
-    namespace: change
-  userNames:
-  - system:serviceaccount:change:robot
+    name: deployer
+    namespace: openshift-vsphere-infra
 - apiVersion: rbac.authorization.k8s.io/v1
-  groupNames: null
   kind: RoleBinding
   metadata:
-    creationTimestamp: null
-    name: edit
-    namespace: helloworld
+    annotations:
+      openshift.io/description: Allows builds in this namespace to push images to
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    name: system:image-builders1
   roleRef:
-    name: edit
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-builder
   subjects:
   - kind: ServiceAccount
-    name: jenkins
-    namespace: cicd
-  userNames:
-  - system:serviceaccount:cicd:jenkins
+    name: builder
+    namespace: openshift-vsphere-infra
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows all pods in this namespace to pull images from
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    name: system:image-pullers1
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-puller
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts:openshift-vsphere-infra
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
