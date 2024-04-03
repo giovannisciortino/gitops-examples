@@ -8,6 +8,7 @@ items:
     labels:
       app.kubernetes.io/instance: test
     name: admin
+    namespace: helloworld
   roleRef:
     name: admin
   subjects:
