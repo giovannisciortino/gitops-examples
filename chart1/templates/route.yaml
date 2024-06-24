@@ -12,6 +12,7 @@ items:
     labels:
       {{- include "chart1.labels" . | nindent 6 }}
     name: {{ include "chart1.fullname" . | trunc 63  }}
+    namespace: guestbook
   spec:
     host: short.apps.lab01.gpslab.club
     port:

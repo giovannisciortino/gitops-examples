@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "chart1.fullname" . }}
+  namespace: guestbook
   labels:
     {{- include "chart1.labels" . | nindent 4 }}
     test: {{ .Release.Name }}
