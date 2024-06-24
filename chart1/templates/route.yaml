@@ -11,7 +11,7 @@ items:
       {{- end }}
     labels:
       {{- include "chart1.labels" . | nindent 6 }}
-    name: {{ include "chart1.fullname" . }}
+    name: {{ include "chart1.fullname" . | trunc 63  }}
   spec:
 #    host: chart1-gsciorti-bitnami-charts.apps.lab01.gpslab.club
     port:
