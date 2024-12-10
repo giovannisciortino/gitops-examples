@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: core
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: image.openshift.io
+    jsonPointers:
+    - /metadata/generation
+    - /status/dockerImageRepository
+    kind: ImageStream
+    namespace: default
+  - group: build.openshift.io
+    jsonPointers:
+    - /metadata/resourceVersion
+    - /status/lastVersion
+    - /spec/triggers
+    kind: BuildConfig
+    namespace: default
+  - group: apps.openshift.io
+    jsonPointers:
+    - /metadata/generation
+    - /spec/triggers/1/imageChangeParams/lastTriggeredImage
+    - /status/latestVersion
+    - /status/observedGeneration
+    - /status/replicas
+    - /status/unavailableReplicas
+    - /status/updatedReplicas
+    - /status/availableReplicas
+    kind: DeploymentConfig
+    namespace: default
+  - group: extensions
+    jsonPointers:
+    - /metadata/generation
+    kind: Deployment
+    namespace: default
+  project: default
+  source:
+    path: ./bc-deployed-manifest
+    repoURL: https://github.com/giovannisciortino/gitops-examples.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - RespectIgnoreDifferences=true
+
