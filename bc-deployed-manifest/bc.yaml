@@ -42,5 +42,3 @@ spec:
       scripts: image:///usr/local/ocp/.s2i/bin/
     type: Source
   successfulBuildsHistoryLimit: 2
-status:
-  lastVersion: 0
