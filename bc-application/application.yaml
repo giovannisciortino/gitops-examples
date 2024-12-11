@@ -18,7 +18,6 @@ spec:
     jsonPointers:
     - /metadata/resourceVersion
     - /status/lastVersion
-    - /status
     - /spec/triggers
     kind: BuildConfig
     namespace: test
