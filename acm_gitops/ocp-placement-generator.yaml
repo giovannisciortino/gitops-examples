@@ -1,0 +1,11 @@
+# Copied from here https://raw.githubusercontent.com/open-cluster-management-io/multicloud-integrations/refs/heads/main/e2e/hub/ocm-placement-generator-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocm-placement-generator
+  namespace: openshift-gitops 
+data:
+  apiVersion: cluster.open-cluster-management.io/v1beta1
+  kind: placementdecisions
+  statusListKey: decisions
+  matchKey: clusterName
