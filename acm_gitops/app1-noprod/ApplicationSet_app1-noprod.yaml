@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook-allclusters-app-set
+  name: app1-noprod
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
       configMapRef: ocm-placement-generator
       labelSelector:
         matchLabels:
-          cluster.open-cluster-management.io/placement: managed-gitops-placement
+          cluster.open-cluster-management.io/placement: app1-noprod
       requeueAfterSeconds: 30
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
-      name: '{{name}}-guestbook-app'
+      name: '{{name}}-app1'
     spec:
       destination:
         namespace: guestbook
@@ -28,7 +28,7 @@ spec:
       source:
         repoURL: https://github.com/giovannisciortino/gitops-examples.git
         targetRevision: main
-        path: app-helloworld-without-ns-creation/{{env}}
+        path: app-helloworld-without-ns-creation
       syncPolicy:
         automated: {}
         syncOptions:
