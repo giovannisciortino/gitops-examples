@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: signalilo-api-noprod
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      files:
+      - path: clusters/signalilo/gcp/noprod/**/config.json
+      - path: clusters/signalilo/onprem/noprod/**/config.json
+      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+      requeueAfterSeconds: 1800
+      revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      annotations:
+        apps.open-cluster-management.io/ocm-managed-cluster: '{{cluster.name}}'
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: openshift-gitops
+        argocd.argoproj.io/skip-reconcile: "true" 
+      labels:
+        apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
+      name: '{{cluster.name}}-signalilo-api'
+      namespace: openshift-gitops
+    spec:
+      destination:
+        namespace: customer-monitoring
+        server: https://kubernetes.default.svc
+      project: cluster-monitoring
+      source:
+        helm:
+          parameters:
+          - name: config.uuid
+            value: api.{{cluster.name}}.{{cluster.domain}}
+          - name: config.icinga_hostname
+            value: api.{{cluster.name}}.{{cluster.domain}}
+          - name: config.icinga_url
+            value: '{{icinga.url}}'
+          valueFiles:
+          - values-api.yaml
+        path: signalilo
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        targetRevision: '{{revision}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
