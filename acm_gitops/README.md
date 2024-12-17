@@ -5,5 +5,3 @@ Installare GitOps sul ManagedCluster
 Importare ManagedCluster sul ACM HUB
 
 
-TODO:
-Aggiungere toleration placement
