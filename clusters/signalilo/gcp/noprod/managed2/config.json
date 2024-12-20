@@ -1,6 +1,6 @@
 {
   "cluster": {
-    "name": "managed1",
+    "name": "managed2",
     "domain": "lab.example.com",
     "address": "https://api.openshift_cluster_not_exists.example.com:6443"
   },
