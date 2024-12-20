@@ -1,0 +1,11 @@
+{
+  "cluster": {
+    "name": "managed",
+    "domain": "example.com",
+    "address": "https://api.managedcluster.lab.psi.pnq2.redhat.com:6443"
+  },
+  "icinga": {
+    "url": "https://icinga1.example.com:5665\nhttps://icinga2.example.com:5665"
+  },
+  "revision": "signalilo--v0.1"
+}

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app2-noacm-noprod
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      files:
+      - path: clusters/app2-noacm-noprod/gcp/noprod/**/config.json
+      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+      requeueAfterSeconds: 10 # 1800
+      revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{cluster.name}}-app2-noacm'
+    spec:
+      destination:
+        namespace: guestbook
+        server: "{{cluster.address}}"
+      project: default
+      source:
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        targetRevision: main
+        path: app-helloworld-without-ns-creation
+      syncPolicy:
+        automated: {}
+        syncOptions:
+        - CreateNamespace=true
