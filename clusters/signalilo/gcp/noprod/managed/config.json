@@ -7,5 +7,5 @@
   "icinga": {
     "url": "https://icinga1.example.com:5665\nhttps://icinga2.example.com:5665"
   },
-  "revision": "signalilo--v0.1"
+  "revision": "master"
 }
