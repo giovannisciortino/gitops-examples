@@ -38,10 +38,23 @@ spec:
             value: api.{{cluster.name}}.{{cluster.domain}}
           - name: config.icinga_url
             value: '{{icinga.url}}'
+          - name: config.icinga_password
+            value: 'notexist and not valid'
           valueFiles:
-          - values-api.yaml
-        path: signalilo
-        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+          - values.yaml
+        path: appuio/signalilo
+        repoURL: https://github.com/appuio/charts.git
+        targetRevision: '{{revision}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+          valueFiles:
+          - values.yaml
+        path: appuio/signalilo
+        repoURL: https://github.com/appuio/charts.git
         targetRevision: '{{revision}}'
       syncPolicy:
         automated:
