@@ -1,0 +1,11 @@
+{
+  "cluster": {
+    "name": "shrocp4upi413sdn",
+    "domain": "example.com",
+    "address": "https://api.shrocp4upi413sdn.lab.psi.pnq2.redhat.com:6443"
+  },
+  "icinga": {
+    "url": "https://icinga.com/demo:443"
+  },
+  "revision": "main"
+}

@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: signalilo-apps-noprod
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      files:
+      - path: test-migration-appset/as_is/clusters/platform1/noprod/**/config.json
+      - path: test-migration-appset/as_is/clusters/platform2/noprod/**/config.json
+      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+      requeueAfterSeconds: 1800
+      revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{cluster.name}}-signalilo-apps'
+      namespace: openshift-gitops
+    spec:
+      destination:
+        namespace: customer-monitoring-apps
+        server: '{{cluster.address}}'
+      project: cluster-monitoring
+      source:
+        helm:
+          parameters:
+          - name: config.uuid
+            value: apps.{{cluster.name}}.{{cluster.domain}}
+          - name: config.icinga_hostname
+            value: apps.{{cluster.name}}.{{cluster.domain}}
+          - name: config.icinga_url
+            value: '{{icinga.url}}'
+          valueFiles:
+          - values-apps.yaml
+        path: test-migration-appset/as_is/signalilo-chart
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        targetRevision: '{{revision}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
