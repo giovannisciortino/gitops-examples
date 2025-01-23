@@ -1,0 +1,73 @@
+# Default values for signalilo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+
+image:
+  registry: quay.io
+  repository: vshn/signalilo@sha256
+  tag: fa0f07f9a1cb90f224ddc87b9819a186f7c188c8194e6938724735f5a62dadec 
+  pullPolicy: IfNotPresent
+  # username:
+  # password:
+  # existingPullSecret: my-image-pull-secret
+
+nameOverride: ""
+fullnameOverride: ""
+serviceName: signalilo-api
+
+# Required configuration
+config:
+  uuid: cluster1.localdomain
+  icinga_hostname: cluster1.localdomain
+  icinga_url: https://cluster1.localdomain:5665/
+  icinga_username: username
+  icinga_password: password  
+
+  alertmanager_port: 12345
+  alertmanager_bearer_token: token
+
+# Optional extra configuration
+extraEnvVars:
+- name: SIGNALILO_LOG_LEVEL
+  value: "2"
+# - name: SIGNALILO_ICINGA_CA
+#   value: |
+#     -----BEGIN CERTIFICATE-----
+#     ....
+#     -----END CERTIFICATE-----
+- name: SIGNALILO_ICINGA_INSECURE_TLS
+  value: "true"
+- name: SIGNALILO_ICINGA_DEBUG
+  value: "false"
+- name: SIGNALILO_ICINGA_GC_INTERVAL
+  value: "5m"
+- name: SIGNALILO_ICINGA_HEARTBEAT_INTERVAL
+  value: "120s"
+- name: SIGNALILO_ICINGA_KEEP_FOR
+  value: "10m"
+- name: SIGNALILO_ALERTMANAGER_PLUGINOUTPUT_ANNOTATIONS
+  value: "message\ndescription"
+- name: SIGNALILO_ICINGA_SERVICE_MAX_CHECKS_ATTEMPTS
+  value: "2"
+    
+securityContext:
+  enabled: false
+  runAsUser: 999
+  fsGroup: 999
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 768Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+

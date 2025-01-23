@@ -1,0 +1,11 @@
+{
+  "cluster": {
+    "name": "shrocp4upi412sdn",
+    "domain": "example.com",
+    "address": "https://kubernetes.default.svc"
+  },
+  "icinga": {
+    "url": "https://icinga.com/demo:443"
+  },
+  "revision": "main"
+}

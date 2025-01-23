@@ -1,0 +1,17 @@
+apiVersion: v1
+description: Alertmanager to Icinga2 bridge - custom version - from original signalilo charts
+name: customer-signalilo
+managed-by: 
+home: https://github.com/giovannisciortino/gitops-examples.git
+keywords:
+  - prometheus
+  - alertmanager
+  - webhook
+  - icinga2
+version: 0.5.0
+appVersion: v0.6.0
+sources:
+  - https://github.com/giovannisciortino/gitops-examples.git
+maintainers:
+  - name: John Doe
+    email: test@localdomain
