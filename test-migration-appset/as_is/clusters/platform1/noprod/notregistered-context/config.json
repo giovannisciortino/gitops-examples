@@ -1,0 +1,11 @@
+{
+  "cluster": {
+    "name": "notregistered",
+    "domain": "example.com",
+    "address": "https://api.notregistred.lab.psi.pnq2.redhat.com:6443"
+  },
+  "icinga": {
+    "url": "https://icinga.com/demo/navigation:443"
+  },
+  "revision": "main"
+}
