@@ -13,7 +13,7 @@ spec:
       requeueAfterSeconds: 1800
       revision: main
   syncPolicy:
-    preserveResourcesOnDeletion: true
+    preserveResourcesOnDeletion: false
   template:
     metadata:
       name: '{{cluster.name}}-signalilo-apps'

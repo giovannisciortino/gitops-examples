@@ -11,8 +11,6 @@ spec:
       repoURL: https://github.com/giovannisciortino/gitops-examples.git
       requeueAfterSeconds: 1800
       revision: main
-  syncPolicy:
-    preserveResourcesOnDeletion: true
   template:
     metadata:
       annotations:
