@@ -1,0 +1,187 @@
+apiVersion: security-profiles-operator.x-k8s.io/v1alpha2
+kind: SelinuxProfile
+metadata:
+  name: testselinuxprofile
+  namespace: testnamespace
+spec:
+  allow:
+    '@self':
+      lnk_file:
+      - read
+    NetworkManager_t:
+      file:
+      - getattr
+      - read
+      - open
+    cgroup_t:
+      dir:
+      - write
+      - add_name
+      - remove_name
+      - rmdir
+      file:
+      - write
+      - read
+      - create
+    container_log_t:
+      dir:
+      - open
+      - read
+      - getattr
+      - lock
+      - search
+      - ioctl
+      - add_name
+      - remove_name
+      - write
+      - create
+      - rmdir
+      - mounton
+      file:
+      - setattr
+      - getattr
+      - read
+      - write
+      - append
+      - ioctl
+      - lock
+      - map
+      - open
+      - create
+      - unlink
+      - rename
+      sock_file:
+      - getattr
+      - read
+      - write
+      - append
+      - open
+    container_runtime_t:
+      unix_stream_socket:
+      - connectto
+    container_t:
+      dir:
+      - search
+      - getattr
+      - read
+      - open
+      file:
+      - read
+      - open
+      - getattr
+      lnk_file:
+      - getattr
+      - read
+      - open
+    container_var_lib_t:
+      dir:
+      - open
+      - read
+      - setattr
+      - getattr
+      - lock
+      - search
+      - ioctl
+      - add_name
+      - remove_name
+      - write
+      - create
+      - rmdir
+      - mounton
+      file:
+      - setattr
+      - getattr
+      - read
+      - write
+      - append
+      - ioctl
+      - lock
+      - map
+      - open
+      - create
+      - unlink
+      - mounton
+      - execute
+      - execute_no_trans
+      lnk_file:
+      - create
+      - unlink
+      - read
+      sock_file:
+      - getattr
+      - read
+      - write
+      - append
+      - open
+    container_var_run_t:
+      dir:
+      - write
+      - add_name
+      - create
+      - setattr
+      - remove_name
+      - read
+      - rmdir
+      - unlink
+      - mounton
+      fifo_file:
+      - read
+      - open
+      - write
+      - create
+      - setattr
+      - unlink
+      file:
+      - getattr
+      - read
+      - open
+      - create
+      - write
+      - unlink
+      - mounton
+    devpts_t:
+      filesystem:
+      - mount
+    init_t:
+      dir:
+      - search
+      - getattr
+      - open
+      - read
+      file:
+      - read
+      - open
+      lnk_file:
+      - read
+    kernel_t:
+      system:
+      - module_request
+    proc_t:
+      filesystem:
+      - mount
+      lnk_file:
+      - read
+    spc_t:
+      dir:
+      - search
+      - getattr
+      - open
+      - read
+      file:
+      - read
+      - open
+      - getattr
+      lnk_file:
+      - getattr
+      - read
+    sysfs_t:
+      filesystem:
+      - mount
+    tmpfs_t:
+      filesystem:
+      - mount
+  disabled: false
+  inherit:
+  - kind: System
+    name: container
+  permissive: false
