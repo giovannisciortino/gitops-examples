@@ -1,0 +1,21 @@
+apiVersion: v1
+items:
+- apiVersion: authorization.openshift.io/v1
+  groupNames: []
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    labels:
+      app.kubernetes.io/instance: test
+    name: admin
+    namespace: helloworld
+  roleRef:
+    name: admin
+  subjects:
+  - kind: ServiceAccount
+    name: robot
+    namespace: change
+  userNames:
+  - system:serviceaccount:change:robot
+kind: List
+metadata: {}
