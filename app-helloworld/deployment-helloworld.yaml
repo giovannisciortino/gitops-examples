@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: hello-openshift
-        image: registry.redhat.io/openshift4/ose-hello-openshift-rhel8
+        image: quay.io/gsciorti/openshift4/ose-hello-openshift-rhel8
         ports:
         - containerPort: 8080
