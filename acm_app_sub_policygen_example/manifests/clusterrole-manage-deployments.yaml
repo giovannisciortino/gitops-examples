@@ -1,0 +1,14 @@
+apiVersion: authorization.openshift.io/v1
+kind: ClusterRole
+metadata:
+  name: manage-deployments
+rules:
+- apiGroups:
+  - ""
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - get
+  - patch
+  - update
