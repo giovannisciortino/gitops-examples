@@ -1,0 +1,18 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: argocd-acmhubcluster
+  namespace: openshift-gitops
+  labels:
+    acm-app: argocd-acmhubcluster
+spec:
+  componentKinds:
+    - group: apps.open-cluster-management.io
+      kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key: acm-app
+        operator: In
+        values:
+          - argocd-acmhubcluster

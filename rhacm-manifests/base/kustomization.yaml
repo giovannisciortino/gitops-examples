@@ -1,0 +1,4 @@
+resources:
+  - namespace-openshift-gitops.yaml
+  - channel-openshift-gitops.yaml
+  - managedclustersetbinding-global.yaml

@@ -1,0 +1,155 @@
+apiVersion: argoproj.io/v1beta1
+kind: ArgoCD
+metadata:
+  name: openshift-gitops
+  namespace: openshift-gitops
+  finalizers:
+    - argoproj.io/finalizer
+spec:
+  applicationSet:
+    resources:
+      limits:
+        cpu: '2'
+        memory: 1Gi
+      requests:
+        cpu: 250m
+        memory: 512Mi
+    webhookServer:
+      ingress:
+        enabled: false
+      route:
+        enabled: false
+  controller:
+    appSync: 300m
+    processors: {}
+    resources:
+      limits:
+        cpu: '2'
+        memory: 4Gi
+      requests:
+        cpu: 250m
+        memory: 1Gi
+    sharding:
+      enabled: true
+      replicas: 1
+  grafana:
+    enabled: false
+    ingress:
+      enabled: false
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
+    route:
+      enabled: false
+  ha:
+    enabled: true
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+  initialSSHKnownHosts: {}
+  monitoring:
+    enabled: false
+  notifications:
+    enabled: false
+  prometheus:
+    enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: false
+  rbac:
+    policy: |
+      p, role:apps-admin, applications, create, */*, allow
+      p, role:apps-admin, applications, update, */*, allow
+      p, role:apps-admin, applications, delete, */*, allow
+      p, role:apps-admin, applications, sync, */*, allow
+      p, role:apps-admin, applications, override, */*, allow
+      p, role:apps-admin, applications, action/*, */*, allow
+      p, role:apps-admin, certificates, create, *, allow
+      p, role:apps-admin, certificates, update, *, allow
+      p, role:apps-admin, certificates, delete, *, allow
+      p, role:apps-admin, clusters, get, *, allow
+      p, role:apps-admin, repositories, create, *, allow
+      p, role:apps-admin, repositories, update, *, allow
+      p, role:apps-admin, repositories, delete, *, allow
+      p, role:apps-admin, repositories, get, *, allow
+      p, role:apps-admin, gpgkeys, create, *, allow
+      p, role:apps-admin, gpgkeys, delete, *, allow
+    scopes: '[groups,name]'
+  redis:
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
+  repo:
+    replicas: 1
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1Gi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+  resourceExclusions: |
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - TaskRun
+      - PipelineRun
+  resourceHealthChecks:
+    - check: |
+        hs = {}
+        hs.status = "Healthy"
+        return hs
+      group: networking.k8s.io
+      kind: Ingress
+  server:
+    replicas: 1
+    autoscale:
+      enabled: false
+    grpc:
+      ingress:
+        enabled: false
+    host: gitops.apps.acmhubcluster.localdomain
+    ingress:
+      enabled: false
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 125m
+        memory: 256Mi
+    route:
+      enabled: true
+      tls:
+        termination: reencrypt
+        insecureEdgeTerminationPolicy: Redirect
+    service:
+      type: ''
+  sso:
+    dex:
+      openShiftOAuth: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+    provider: dex
+  tls:
+    ca: {}
