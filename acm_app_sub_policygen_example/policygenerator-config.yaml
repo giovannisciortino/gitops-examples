@@ -1,0 +1,20 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: policygen-testuser
+policyDefaults:
+  categories:
+    - CM Configuration Management
+  namespace: policy-generator
+  remediationAction: enforce
+  severity: medium
+  complianceType: mustonlyhave
+policies:
+- name: testuser
+  disabled: false
+  manifests:
+    - path: ./manifests
+  placement:
+    labelSelector:
+      vendor: OpenShift
