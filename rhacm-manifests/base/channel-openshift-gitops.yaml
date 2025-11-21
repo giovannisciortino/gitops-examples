@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: channel-openshift-gitops
+  namespace: openshift-gitops 
+  labels:
+    app:  openshift-gitops
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: low
+spec:
+  type: Git
+  pathname: https://github.com/giovannisciortino/gitops-examples.git
