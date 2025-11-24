@@ -4,7 +4,7 @@ metadata:
   name: testconfigurationpolicy
 spec:
   object-templates-raw: |
-    {{hub- $secret := (lookup "v1" "Secret" "test" "source") hub}}
+    {{hub- $secret := (lookup "v1" "Secret" "policy-generator" "source") hub}}
     - complianceType: mustonlyhave
       objectDefinition:
         apiVersion: v1
