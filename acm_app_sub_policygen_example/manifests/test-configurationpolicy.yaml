@@ -1,0 +1,23 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: ConfigurationPolicy
+metadata:
+  name: testconfigurationpolicy
+spec:
+  object-templates-raw: |
+    {{hub- $secret := (lookup "v1" "Secret" "test" "source") hub}}
+    - complianceType: mustonlyhave
+      objectDefinition:
+        apiVersion: v1
+        kind: Secret
+        type: kubernetes.io/tls
+        metadata:
+          name: target
+          namespace: default
+          labels:
+            {{hub- range $lb,$lv := $secret.metadata.labels hub}}
+            {{hub $lb hub}}: {{hub $lv | quote hub}}
+            {{hub- end hub}}
+            customlabel: customvalue
+        data:
+          tls.crt: '{{hub index $secret.data "tls.crt" hub}}'
+          tls.key: '{{hub index $secret.data "tls.key" hub}}'
