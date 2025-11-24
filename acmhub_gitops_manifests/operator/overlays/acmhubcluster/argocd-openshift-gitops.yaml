@@ -145,7 +145,7 @@ spec:
     grpc:
       ingress:
         enabled: false
-    host: gitops.apps.acmhubcluster.localdomain
+    host: gitops.apps.ocp4.zsvsc.gcp.redhatworkshops.io
     ingress:
       enabled: false
     resources:
