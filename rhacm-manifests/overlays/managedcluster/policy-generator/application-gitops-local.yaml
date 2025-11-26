@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: managedcluster-gitops-local
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: rhacm-manifests/overlays/managedcluster/policy-generator
+    repoURL: https://github.com/giovannisciortino/gitops-examples.git
+    targetRevision: b
+  syncPolicy:
+    automated:
+      prune: true
