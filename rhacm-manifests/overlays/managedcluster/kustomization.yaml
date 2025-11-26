@@ -7,7 +7,6 @@ bases:
 resources:
   - policy/placementbinding-openshift-gitops.yaml
   - policy/policy-openshift-gitops.yaml
-  - application-openshift-gitops.yaml
   - placement-openshift-gitops.yaml
-  - subscription-gitops-operator.yaml
+  - policy-generator/application-gitops-local.yaml
 
