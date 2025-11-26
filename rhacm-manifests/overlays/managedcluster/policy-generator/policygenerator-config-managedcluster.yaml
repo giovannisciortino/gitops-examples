@@ -1,0 +1,20 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: policygen-gitops-local-managedcluster
+policyDefaults:
+  categories:
+    - CM Configuration Management
+  namespace: openshift-gitops
+  remediationAction: enforce
+  severity: medium
+  complianceType: musthave
+policies:
+- name: openshift-gitops-resources-managedcluster
+  disabled: false
+  manifests:
+    - path: ./overlay_redirect/
+  placement:
+    labelSelector:
+      name: managedcluster

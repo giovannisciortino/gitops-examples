@@ -5,6 +5,9 @@ resources:
   - ../../base
   - argocd-openshift-gitops.yaml
   - argocd-appproject/cluster-project.yaml
+  - operator/namespace_openshift-gitops-operator.yaml
+  - operator/operatorgroup_openshift-gitops-operator.yaml
+  - operator/subscription_openshift-gitops-operator.yaml
 
 
 patchesStrategicMerge:
