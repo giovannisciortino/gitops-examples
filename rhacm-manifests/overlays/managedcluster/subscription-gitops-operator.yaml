@@ -1,0 +1,19 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: gitops-operator-subscription-managedcluster
+  namespace: openshift-gitops
+  labels:
+    acm-app: argocd-managedcluster
+  annotations:
+    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-path: gitops-manifests/operator/overlays/managedcluster
+    apps.open-cluster-management.io/reconcile-option: merge
+    apps.open-cluster-management.io/skip-hub-validation: "true"
+spec:
+  channel: openshift-gitops/channel-openshift-gitops
+  placement:
+    placementRef:
+      kind: Placement
+      name: openshift-gitops-placement-managedcluster
+
