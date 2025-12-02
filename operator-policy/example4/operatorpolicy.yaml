@@ -1,0 +1,74 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: operator-policy-example4
+spec: {}
+---
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSetBinding
+metadata:
+  namespace: operator-policy-example4
+  name: global
+spec:
+  clusterSet: global
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: operator-policy-example4
+  namespace: operator-policy-example4
+spec:
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1beta1
+        kind: OperatorPolicy
+        metadata:
+          name: install-openshift-custom-auto-scaler
+        spec:
+          remediationAction: enforce
+          severity: critical
+          complianceType: musthave
+          upgradeApproval: Automatic
+          subscription:
+            channel: stable
+            name: openshift-custom-metrics-autoscaler-operator
+            source: redhat-operators
+            sourceNamespace: openshift-marketplace
+            startingCSV: custom-metrics-autoscaler.v2.17.2-2
+          versions:
+            - custom-metrics-autoscaler.v2.17.2-2
+
+
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: operator-policy-example4
+  namespace: operator-policy-example4
+placementRef:
+  name: operator-policy-example4
+  kind: Placement
+  apiGroup: cluster.open-cluster-management.io
+subjects:
+  - name: operator-policy-example4
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Placement
+metadata:
+  name: operator-policy-example4
+  namespace: operator-policy-example4
+spec:
+  predicates:
+  - requiredClusterSelector:
+      labelSelector:
+        matchExpressions:
+          - {key: name, operator: In, values: ["local-cluster"]}
+  tolerations:
+    - key: cluster.open-cluster-management.io/unreachable
+      operator: Exists
+    - key: cluster.open-cluster-management.io/unavailable
+      operator: Exists
