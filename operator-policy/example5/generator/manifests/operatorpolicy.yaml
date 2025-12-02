@@ -1,0 +1,17 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: OperatorPolicy
+metadata:
+  name: install-openshift-custom-auto-scaler
+spec:
+  remediationAction: enforce
+  severity: critical
+  complianceType: musthave
+  upgradeApproval: Automatic
+  subscription:
+    channel: stable
+    name: openshift-custom-metrics-autoscaler-operator
+    source: redhat-operators
+    sourceNamespace: openshift-marketplace
+    startingCSV: custom-metrics-autoscaler.v2.17.2-2
+  versions:
+    - custom-metrics-autoscaler.v2.17.2-2
