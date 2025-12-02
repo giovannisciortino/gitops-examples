@@ -145,7 +145,7 @@ spec:
     grpc:
       ingress:
         enabled: false
-    host: gitops.apps.ocp4.pnk29.gcp.redhatworkshops.io
+    host: gitops.apps.cluster-wx89z.wx89z.gcp.redhatworkshops.io
     ingress:
       enabled: false
     resources:
