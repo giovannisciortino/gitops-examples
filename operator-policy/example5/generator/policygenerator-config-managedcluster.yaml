@@ -14,7 +14,7 @@ policies:
 - name: openshift-gitops-resources-managedcluster
   disabled: false
   manifests:
-    - path: ./manifests
+    - path: ./operator-policy/example5/generator
   placement:
     labelSelector:
       name: local-cluster
