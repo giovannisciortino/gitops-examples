@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: operator-policy/example4/generator
+    path: operator-policy/example5/generator
     repoURL: https://github.com/giovannisciortino/gitops-examples.git
     targetRevision: main
   syncPolicy:
