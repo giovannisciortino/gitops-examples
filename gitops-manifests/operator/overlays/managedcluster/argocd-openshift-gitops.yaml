@@ -123,7 +123,7 @@ spec:
     grpc:
       ingress:
         enabled: false
-    host: gitops.apps.cluster-t58hx.dynamic.redhatworkshops.io
+    host: gitops.apps.ocp4.v5rtf.gcp.redhatworkshops.io
     ingress:
       enabled: false
     resources:
