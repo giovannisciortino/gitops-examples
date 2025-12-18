@@ -83,6 +83,7 @@ spec:
       p, role:apps-admin, repositories, get, *, allow
       p, role:apps-admin, gpgkeys, create, *, allow
       p, role:apps-admin, gpgkeys, delete, *, allow
+      g, adminadmin, role:admin
     scopes: '[groups,name]'
   redis:
     resources:
