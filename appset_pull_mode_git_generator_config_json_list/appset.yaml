@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-config-json-list
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      files:
+      - path: ./appset_pull_mode_git_generator_config_json_list/clusters/cluster-noprod/config.json
+#      - path: ./appset_pull_mode_git_generator_config_json_list/clusters/cluster-prod/config.yaml
+      repoURL: https://github.com/giovannisciortino/gitops-examples.git
+      requeueAfterSeconds: 1800
+      revision: main
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      annotations:
+        apps.open-cluster-management.io/ocm-managed-cluster: '{{ cluster.name }}'
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: openshift-gitops
+        argocd.argoproj.io/skip-reconcile: "true"
+      labels:
+        apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true"
+      name: '{{cluster.name}}-app1'
+      namespace: openshift-gitops
+    spec:
+      destination:
+        namespace: app1
+        server: 'https://kubernetes.default.svc'
+      project: default
+      source:
+        helm:
+          parameters:
+          - name: cluster.name
+            value: '{{cluster.name}}'
+          - name: cluster.domain
+            value: '{{cluster.domain}}'
+          valueFiles:
+          - values-apps.yaml
+        path: appset_pull_mode_git_generator_config_json_list/helm_chart
+        repoURL: https://github.com/giovannisciortino/gitops-examples.git
+        targetRevision: '{{revision}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

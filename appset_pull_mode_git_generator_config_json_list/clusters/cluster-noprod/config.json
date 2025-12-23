@@ -1,0 +1,18 @@
+[
+  {
+    "cluster": {
+      "name": "cluster1",
+      "domain": "bj7wz.gcp.redhatworkshops.io",
+      "address": "https://api.cluster1.bj7wz.gcp.redhatworkshops.io:6443"
+    },
+    "revision": "main"
+  },
+  {
+    "cluster": {
+      "name": "cluster2",
+      "domain": "bj7wz.gcp.redhatworkshops.io",
+      "address": "https://api.cluster2.bj7wz.gcp.redhatworkshops.io:6443"
+    },
+    "revision": "main"
+  }
+]
