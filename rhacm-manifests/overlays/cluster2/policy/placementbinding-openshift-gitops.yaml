@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: openshift-gitops-placementbinding-cluster2
+  namespace: openshift-gitops
+placementRef:
+  name: openshift-gitops-placement-cluster2
+  kind: Placement
+  apiGroup: cluster.open-cluster-management.io
+subjects:
+  - name: openshift-gitops-installed-cluster2
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
