@@ -3,7 +3,7 @@
     "cluster": {
       "name": "cluster2",
       "domain": "49zwn.gcp.redhatworkshops.io",
-      "address": "https://api.cluster1.49zwn.gcp.redhatworkshops.io:6443"
+      "address": "https://api.cluster2.49zwn.gcp.redhatworkshops.io:6443"
     },
     "revision": "main"
   }
