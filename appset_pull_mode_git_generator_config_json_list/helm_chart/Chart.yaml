@@ -1,0 +1,6 @@
+apiVersion: v2
+name: my-minimal-chart
+description: Un chart minimale con Deployment, Service e Route
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
