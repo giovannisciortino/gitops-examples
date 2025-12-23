@@ -1,0 +1,24 @@
+apiVersion: work.open-cluster-management.io/v1
+kind: ManifestWork
+metadata:
+  name: appproject-app1
+  namespace: cluster1
+  labels:
+    app: hello
+spec:
+  workload:
+    manifests:
+    - apiVersion: argoproj.io/v1alpha1
+      kind: AppProject
+      metadata:
+        name: app1
+        namespace: openshift-gitops
+      spec:
+        clusterResourceWhitelist:
+          - group: '*'
+            kind: '*'
+        destinations:
+          - namespace: '*'
+            server: '*'
+        sourceRepos:
+          - '*'
