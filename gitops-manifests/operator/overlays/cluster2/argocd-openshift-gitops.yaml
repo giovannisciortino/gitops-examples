@@ -124,7 +124,7 @@ spec:
     grpc:
       ingress:
         enabled: false
-    host: gitops.apps.cluster2.49zwn.gcp.redhatworkshops.io
+    host: gitops.apps.cluster2.k9gjg.gcp.redhatworkshops.io
     ingress:
       enabled: false
     resources:
