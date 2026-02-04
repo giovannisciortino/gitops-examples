@@ -1,8 +1,8 @@
 {
   "cluster": {
-    "name": "shrocp4upi413sdn",
+    "name": "acm",
     "domain": "example.com",
-    "address": "https://api.shrocp4upi413sdn.lab.psi.pnq2.redhat.com:6443"
+    "address": "https://api.acm.ppqqt.gcp.redhatworkshops.io:6443"
   },
   "icinga": {
     "url": "https://icinga.com/demo/navigation:443"

@@ -1,8 +1,8 @@
 {
   "cluster": {
-    "name": "notregistered",
+    "name": "cluster2",
     "domain": "example.com",
-    "address": "https://api.notregistred.lab.psi.pnq2.redhat.com:6443"
+    "address": "https://api.cluster2.ppqqt.gcp.redhatworkshops.io:6443"
   },
   "icinga": {
     "url": "https://icinga.com/demo/navigation:443"
