@@ -1,0 +1,11 @@
+{
+  "cluster": {
+    "name": "cluster3",
+    "domain": "example.com",
+    "address": "https://api.cluster3.ppqqt.gcp.redhatworkshops.io:6443"
+  },
+  "icinga": {
+    "url": "https://icinga.com/demo/navigation:443"
+  },
+  "revision": "main"
+}
