@@ -7,4 +7,4 @@ repoURL: "https://gitea-git1.apps.managed1.v6vbg.gcp.redhatworkshops.io/admin/gi
 targetRevision: "main"
 basePath: "argocd-agent"
 argocdNamespace: "openshift-gitops"
-automated: false
+automated: true
