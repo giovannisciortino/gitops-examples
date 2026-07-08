@@ -1,0 +1,8 @@
+config:
+  namespaces: 2
+  projectsPerNs: 2
+  appsPerProject: 2
+  leafAppsPerAppOfApp: 5
+
+  repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
+  targetRevision: "main"

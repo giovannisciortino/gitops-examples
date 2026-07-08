@@ -1,0 +1,21 @@
+{{- range $leaf := until (int .Values.leafCount) }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: final-app-{{ $.Values.appId }}-leaf{{ $leaf }}
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: {{ $.Values.repoURL }}
+    targetRevision: {{ $.Values.targetRevision }}
+    path: argocd-agent/gitops-load-dummy-config
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $.Values.targetNs }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+{{- end }}

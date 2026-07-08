@@ -1,0 +1,8 @@
+{{- range $ns := until (int .Values.config.namespaces) }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: target-ns-{{ $ns }}
+---
+{{- end }}
+

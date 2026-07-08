@@ -1,0 +1,6 @@
+# These will be overwritten by the App-of-Apps Helm parameters
+appId: "default"
+targetNs: "default"
+leafCount: 10
+repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
+targetRevision: "main"

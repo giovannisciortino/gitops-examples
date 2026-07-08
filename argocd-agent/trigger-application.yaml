@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-load-generator
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
+    targetRevision: "main"
+    path: argocd-agent/gitops-load-root
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

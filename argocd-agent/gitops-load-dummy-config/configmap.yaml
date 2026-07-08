@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dummy-load-config
+data:
+  test-status: "active"
+  description: "Minimal payload to test Argo CD scalability"

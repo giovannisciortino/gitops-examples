@@ -1,0 +1,22 @@
+{{- range $ns := until (int .Values.config.namespaces) }}
+{{- range $proj := until (int $.Values.config.projectsPerNs) }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project-ns{{ $ns }}-p{{ $proj }}
+  namespace: openshift-gitops
+spec:
+  description: "Load test project for namespace {{ $ns }}"
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: target-ns-{{ $ns }}
+    server: https://kubernetes.default.svc
+  # Allow the App-of-Apps to create other Applications
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+---
+{{- end }}
+{{- end }}
+
