@@ -1,0 +1,20 @@
+# Namespace di default dove risiede ArgoCD (solitamente openshift-gitops)
+argoNamespace: openshift-gitops
+clusterTargetServer: https://kubernetes.default.svc
+
+# Lista delle applicazioni figlie da generare
+applications:
+  - name: frontend
+    # Il nome del namespace basato sulla variabile 'env' (es. target-namespace: dev-frontend)
+    env: dev
+    source:
+      repoURL: https://github.com/argoproj/argocd-example-apps.git
+      targetRevision: HEAD
+      path: guestbook
+  
+  - name: backend
+    env: stage
+    source:
+      repoURL: https://github.com/argoproj/argocd-example-apps.git
+      targetRevision: HEAD
+      path: helm-guestbook

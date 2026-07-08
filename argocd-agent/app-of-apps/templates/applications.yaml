@@ -1,0 +1,30 @@
+{{- range .Values.applications }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # Nome univoco dell'applicazione figlia
+  name: scale-{{ .name }}-{{ .env }}
+  # Le Application di ArgoCD devono essere create nello stesso namespace del controller
+  namespace: {{ $.Values.argoNamespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Progetto ArgoCD di appartenenza (puoi renderlo dinamico se serve)
+  project: default
+  source:
+    repoURL: {{ .source.repoURL }}
+    targetRevision: {{ .source.targetRevision }}
+    path: {{ .source.path }}
+  destination:
+    server: {{ $.Values.clusterTargetServer }}
+    # NAMESPACE DINAMICO: Basato sulla variabile .env e sul nome dell'applicazione
+    namespace: {{ .env }}-{{ .name }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      # Opzione fondamentale: dice ad ArgoCD di creare il namespace di destinazione se non esiste
+      - CreateNamespace=true
+{{- end }}

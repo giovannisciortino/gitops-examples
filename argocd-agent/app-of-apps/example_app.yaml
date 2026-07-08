@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app-of-apps
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    # URL del repository dove hai salvato la cartella 'argo-app-of-apps'
+    repoURL: https://github.com/tuo-profilo/tuo-repo-gitops.git
+    targetRevision: HEAD
+    path: argo-app-of-apps # Path della cartella del Chart Helm
+    
+    # Opzionale: Puoi fare l'override dei values direttamente da qui senza modificare il Git
+    helm:
+      values: |
+        argoNamespace: openshift-gitops
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
