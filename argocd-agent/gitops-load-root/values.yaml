@@ -15,4 +15,4 @@ config:
 
   # Leave leaves unautomated so they populate the UI without
   # hammering the repo-server. Set to true to exercise full sync.
-  automateLeaves: false
+  automateLeaves: true
