@@ -1,8 +1,8 @@
 config:
-  namespaces: 5
-  projectsPerNs: 4
-  appsPerProject: 5
-  leafAppsPerAppOfApp: 5
+  namespaces: 1
+  projectsPerNs: 1
+  appsPerProject: 1
+  leafAppsPerAppOfApp: 1
 
   repoURL: "http://gitea.git1.svc:3000/admin/gitops-examples.git"
   targetRevision: "main"
