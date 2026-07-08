@@ -12,7 +12,7 @@ metadata:
   labels:
     gitops-load-test: "true"
 spec:
-  project: project-ns{{ $ns }}-p{{ $proj }}
+  project: project-{{ add (mod $app 1000) 1 }}
   source:
     repoURL: {{ $.Values.config.repoURL }}
     targetRevision: {{ $.Values.config.targetRevision }}
@@ -24,7 +24,7 @@ spec:
       - name: "targetNs"
         value: "target-ns-{{ $ns }}"
       - name: "project"
-        value: "project-ns{{ $ns }}-p{{ $proj }}"
+        value: "project-{{ add (mod $app 1000) 1 }}"
       - name: "leafCount"
         value: "{{ $.Values.config.leafAppsPerAppOfApp }}"
       - name: "repoURL"
