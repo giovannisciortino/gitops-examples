@@ -4,7 +4,7 @@ clusterTargetServer: https://kubernetes.default.svc
 
 # Lista delle applicazioni figlie da generare
 applications:
-  - name: frontend
+  - name: microsvc1
     # Il nome del namespace basato sulla variabile 'env' (es. target-namespace: dev-frontend)
     env: dev
     source:
@@ -12,7 +12,7 @@ applications:
       targetRevision: HEAD
       path: guestbook
   
-  - name: backend
+  - name: microsvc2
     env: stage
     source:
       repoURL: https://github.com/argoproj/argocd-example-apps.git
