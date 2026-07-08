@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
+    repoURL: "http://gitea.git1.svc:3000/admin/gitops-examples.git"
     targetRevision: "main"
     path: argocd-agent/gitops-load-root
   destination:
