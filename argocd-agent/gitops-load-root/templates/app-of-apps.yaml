@@ -1,37 +1,47 @@
 {{- range $ns := until (int .Values.config.namespaces) }}
 {{- range $proj := until (int $.Values.config.projectsPerNs) }}
 {{- range $app := until (int $.Values.config.appsPerProject) }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: appofapps-ns{{ $ns }}-p{{ $proj }}-a{{ $app }}
-  namespace: openshift-gitops
+  namespace: {{ $.Values.config.argocdNamespace }}
+  labels:
+    gitops-load-test: "true"
 spec:
   project: project-ns{{ $ns }}-p{{ $proj }}
   source:
     repoURL: {{ $.Values.config.repoURL }}
     targetRevision: {{ $.Values.config.targetRevision }}
-    path: gitops-agent/gitops-load-leaf
+    path: {{ $.Values.config.basePath }}/gitops-load-leaf
     helm:
       parameters:
       - name: "appId"
         value: "ns{{ $ns }}-p{{ $proj }}-a{{ $app }}"
       - name: "targetNs"
         value: "target-ns-{{ $ns }}"
+      - name: "project"
+        value: "project-ns{{ $ns }}-p{{ $proj }}"
       - name: "leafCount"
         value: "{{ $.Values.config.leafAppsPerAppOfApp }}"
       - name: "repoURL"
         value: "{{ $.Values.config.repoURL }}"
       - name: "targetRevision"
         value: "{{ $.Values.config.targetRevision }}"
+      - name: "basePath"
+        value: "{{ $.Values.config.basePath }}"
+      - name: "argocdNamespace"
+        value: "{{ $.Values.config.argocdNamespace }}"
+      - name: "automated"
+        value: "{{ $.Values.config.automateLeaves }}"
   destination:
     server: https://kubernetes.default.svc
-    namespace: openshift-gitops
+    namespace: {{ $.Values.config.argocdNamespace }}
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
----
 {{- end }}
 {{- end }}
 {{- end }}

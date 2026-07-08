@@ -1,6 +1,10 @@
-# These will be overwritten by the App-of-Apps Helm parameters
+# All of these are overridden by the app-of-apps Helm parameters.
 appId: "default"
 targetNs: "default"
-leafCount: 10
+project: "default"
+leafCount: 5
 repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
 targetRevision: "main"
+basePath: "argocd-agent"
+argocdNamespace: "openshift-gitops"
+automated: false

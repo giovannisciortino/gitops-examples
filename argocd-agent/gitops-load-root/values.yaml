@@ -1,8 +1,18 @@
 config:
-  namespaces: 2
-  projectsPerNs: 2
-  appsPerProject: 2
+  namespaces: 5
+  projectsPerNs: 4
+  appsPerProject: 5
   leafAppsPerAppOfApp: 5
 
   repoURL: "https://github.com/giovannisciortino/gitops-examples.git"
   targetRevision: "main"
+
+  # Base path in the repo under which the charts live.
+  basePath: "argocd-agent"
+
+  # Namespace where Argo CD watches for Application resources.
+  argocdNamespace: "openshift-gitops"
+
+  # Leave leaves unautomated so they populate the UI without
+  # hammering the repo-server. Set to true to exercise full sync.
+  automateLeaves: false

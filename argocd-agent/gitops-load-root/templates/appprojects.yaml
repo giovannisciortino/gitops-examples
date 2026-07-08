@@ -1,22 +1,30 @@
 {{- range $ns := until (int .Values.config.namespaces) }}
 {{- range $proj := until (int $.Values.config.projectsPerNs) }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: project-ns{{ $ns }}-p{{ $proj }}
-  namespace: openshift-gitops
+  namespace: {{ $.Values.config.argocdNamespace }}
+  labels:
+    gitops-load-test: "true"
 spec:
   description: "Load test project for namespace {{ $ns }}"
   sourceRepos:
   - '*'
   destinations:
+  # Leaf workloads land here.
   - namespace: target-ns-{{ $ns }}
     server: https://kubernetes.default.svc
-  # Allow the App-of-Apps to create other Applications
+  # The app-of-apps Applications themselves are created here.
+  - namespace: {{ $.Values.config.argocdNamespace }}
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
----
+  # Required so the app-of-apps may create child Application objects.
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
 {{- end }}
 {{- end }}
-

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: gitops-load-root
+description: Root chart generating namespaces, AppProjects and app-of-apps Applications for Argo CD UI load testing
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
