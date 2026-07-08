@@ -1,9 +1,12 @@
 config:
+  # namespaces: 100
+  # projectsPerNs: 10
+  # appsPerProject: 10
+  # leafAppsPerAppOfApp: 10
   namespaces: 100
   projectsPerNs: 10
-  appsPerProject: 10
-  leafAppsPerAppOfApp: 10
-
+  appsPerProject: 1
+  leafAppsPerAppOfApp: 2
   repoURL: "https://gitea-git1.apps.managed1.v6vbg.gcp.redhatworkshops.io/admin/gitops-examples.git"
   targetRevision: "main"
 
