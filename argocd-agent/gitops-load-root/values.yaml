@@ -4,7 +4,7 @@ config:
   appsPerProject: 1
   leafAppsPerAppOfApp: 1
 
-  repoURL: "http://gitea.git1.svc:3000/admin/gitops-examples.git"
+  repoURL: "https://gitea-git1.apps.managed1.v6vbg.gcp.redhatworkshops.io/admin/gitops-examples.git"
   targetRevision: "main"
 
   # Base path in the repo under which the charts live.
