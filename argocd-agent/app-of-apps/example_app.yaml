@@ -7,10 +7,9 @@ spec:
   project: default
   source:
     # URL del repository dove hai salvato la cartella 'argo-app-of-apps'
-    repoURL: https://github.com/tuo-profilo/tuo-repo-gitops.git
+    repoURL: https://github.com/giovannisciortino/gitops-examples.git
     targetRevision: HEAD
-    path: argo-app-of-apps # Path della cartella del Chart Helm
-    
+    path: argocd-agent/app-of-apps
     # Opzionale: Puoi fare l'override dei values direttamente da qui senza modificare il Git
     helm:
       values: |
